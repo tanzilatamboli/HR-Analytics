@@ -17,7 +17,7 @@ public class AssociateDAO {
         this.hibernateTemplate = hibernateTemplate;
     }
 
-    public Associate save(Associate associate){
+    public Associate saveOrUpdate(Associate associate){
         Associate associate1 = new Associate();
         associate1.setId(associate.getId());
         associate1.setFirstName(associate.getFirstName());
@@ -25,8 +25,7 @@ public class AssociateDAO {
         associate1.setLocation(associate.getLocation());
         associate1.setDateOfJoining(associate.getDateOfJoining());
         associate1.setReportingManager(associate.getReportingManager());
-        associate1.setLastPromotionDate(associate.getLastPromotionDate());
-        hibernateTemplate.save(associate1);
+        hibernateTemplate.saveOrUpdate(associate1);
         return associate;
     }
 

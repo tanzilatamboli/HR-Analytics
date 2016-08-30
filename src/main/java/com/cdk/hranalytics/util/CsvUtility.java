@@ -4,16 +4,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tambolit on 8/30/2016.
- */
+
 public class CsvUtility {
     public static List<String> readLines(String filePath){
         List<String> detailsList = null;
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(filePath));
-            detailsList = new ArrayList<>();
+            detailsList = new ArrayList();
             String line = br.readLine();
             while (line != null) {
                 detailsList.add(line);
@@ -37,7 +35,7 @@ public class CsvUtility {
                     } else if (object instanceof Writer) {
                         ((Writer) object).close();
                     } else {
-                        //throw new EcomException("Invalid Argument !!!");
+                        //throw new Exception("Invalid Argument !!!");
                     }
                 } catch (IOException e) {
                     //throw new EcomException(e.toString());

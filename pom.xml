@@ -46,6 +46,12 @@
       <artifactId>spring-orm</artifactId>
       <version>4.3.2.RELEASE</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jumpmind.symmetric/symmetric-csv -->
+    <dependency>
+      <groupId>org.jumpmind.symmetric</groupId>
+      <artifactId>symmetric-csv</artifactId>
+      <version>3.5.19</version>
+    </dependency>
 
 
   </dependencies>

@@ -17,14 +17,14 @@ public class AppraisalDAO {
         this.hibernateTemplate = hibernateTemplate;
     }
 
-    public Appraisal save(Appraisal appraisal){
+    public Appraisal saveOrUpdate(Appraisal appraisal){
         Appraisal appraisal1 = new Appraisal();
         appraisal1.setId(appraisal.getId());
         appraisal1.setRatingPeriod(appraisal.getRatingPeriod());
         appraisal1.setRating(appraisal.getRating());
         appraisal1.setSalary(appraisal.getSalary());
         appraisal1.setPromotedTo(appraisal.getPromotedTo());
-        hibernateTemplate.save(appraisal1);
+        hibernateTemplate.saveOrUpdate(appraisal1);
         return appraisal;
 
     }
