@@ -61,4 +61,6 @@ public class Appraisal {
     public void setPromotedTo(String promotedTo) {
         this.promotedTo = promotedTo;
     }
+
+
 }

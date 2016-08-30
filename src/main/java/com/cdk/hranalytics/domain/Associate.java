@@ -25,6 +25,8 @@ public class Associate {
     private String currentGrade;
     @Column(name = "reportingManager")
     private  int reportingManager;
+    @Column(name = "lastPromotionDate")
+    private Date lastPromotionDate;
 
     public int getId() {
         return id;
@@ -81,4 +83,13 @@ public class Associate {
     public void setReportingManager(int reportingManager) {
         this.reportingManager = reportingManager;
     }
+
+    public Date getLastPromotionDate() {
+        return lastPromotionDate;
+    }
+
+    public void setLastPromotionDate(Date lastPromotionDate) {
+        this.lastPromotionDate = lastPromotionDate;
+    }
+
 }
