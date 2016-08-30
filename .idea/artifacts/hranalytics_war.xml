@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hranalytics:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="hranalytics.war">
+      <element id="artifact" artifact-name="hranalytics:war exploded" />
+    </root>
+  </artifact>
+</component>
