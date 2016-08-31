@@ -1,20 +1,19 @@
 package com.cdk.hranalytics.controller;
 
-import com.cdk.hranalytics.service.DataDistributor;
+import com.cdk.hranalytics.dao.AppraisalDAO;
+import com.cdk.hranalytics.domain.Appraisal;
+import com.cdk.hranalytics.service.DataUtility;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,14 +23,14 @@ import java.util.List;
 public class AppraisalController {
 /*
     @Autowired
-    private DataDistributor dataDistributor = null;
+    private DataUtility dataUtility = null;
 
-    public DataDistributor getDataDistributor() {
-        return dataDistributor;
+    public DataUtility getDataUtility() {
+        return dataUtility;
     }
 
-    public void setDataDistributor(DataDistributor dataDistributor) {
-        this.dataDistributor = dataDistributor;
+    public void setDataUtility(DataUtility dataUtility) {
+        this.dataUtility = dataUtility;
     }
 */
     private String filePath;
@@ -51,12 +50,19 @@ public class AppraisalController {
             filePath = "C:\\Users\\dullus\\Pictures\\Slide Shows\\" + fileItem.getName();
             File file = new File(filePath);
             fileItem.write(file);
-            DataDistributor.read(filePath);
+            DataUtility.read(filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "success";
     }
 
-
+    @RequestMapping(value = "/getAppraisal",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    List<Appraisal> getAppraisal(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("eid"));
+        AppraisalDAO appraisalDAO = new AppraisalDAO();
+        return appraisalDAO.getAppraisalById(id);
+    }
 }

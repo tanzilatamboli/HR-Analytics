@@ -4,6 +4,8 @@ import com.cdk.hranalytics.domain.Appraisal;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class AppraisalDAO {
@@ -31,8 +33,9 @@ public class AppraisalDAO {
         appraisal1.setPromotedTo(appraisal.getPromotedTo());
         hibernateTemplate.saveOrUpdate(appraisal1);
         return appraisal;
-
     }
 
-
+    public List<Appraisal> getAppraisalById(int id){
+        return (List<Appraisal>)hibernateTemplate.findByNamedParam("from com.cdk.hranalytics.domain.Appraisal a where  a.id=:aid", "aid", id);
+    }
 }

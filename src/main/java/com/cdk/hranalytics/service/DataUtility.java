@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class DataDistributor {
+public class DataUtility {
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
     public static Boolean read(String filePath)  {
