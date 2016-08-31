@@ -33,7 +33,11 @@
       <artifactId>spring-webmvc</artifactId>
       <version>4.3.2.RELEASE</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>3.8</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
     <dependency>
       <groupId>org.hibernate</groupId>
