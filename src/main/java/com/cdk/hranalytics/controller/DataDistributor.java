@@ -6,37 +6,33 @@ import com.cdk.hranalytics.domain.Appraisal;
 import com.cdk.hranalytics.domain.Associate;
 import com.cdk.hranalytics.util.CsvUtility;
 import com.cdk.hranalytics.util.DateUtility;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
 import java.util.List;
 
-
+@Controller
 public class DataDistributor {
     private static final String FIELD_SEPARATOR = ",";
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
-    public List<Associate> readAssociates(String filePath)  {
+    @RequestMapping(value = "/read.do", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    void read(String filePath)  {
         //String file="C:\\Users\\dullus\\Desktop\\HRProjectData.csv";
         List<Associate> associatesList = null;
-        List<String> listOfRecords = CsvUtility.readLines(filePath);
-        if (null != listOfRecords) {
-            for (String line : listOfRecords) {
-                associatesList.add(buildAssociate(line));
-            }
-        }
-        return associatesList;
-    }
-
-    public List<Appraisal> readAppraisal(String filePath)  {
-        //String file="C:\\Users\\dullus\\Desktop\\HRProjectData.csv";
         List<Appraisal> appraisalList = null;
         List<String> listOfRecords = CsvUtility.readLines(filePath);
         if (null != listOfRecords) {
             for (String line : listOfRecords) {
+                associatesList.add(buildAssociate(line));
                 appraisalList.add(buildAppraisal(line));
             }
         }
-        return appraisalList;
     }
 
     private Appraisal buildAppraisal(String line) {
@@ -44,7 +40,7 @@ public class DataDistributor {
         String[] appraisalFields = line.split(FIELD_SEPARATOR);
         for(int i = 7 ; ; i=i+3){
             appraisal.setId(Integer.parseInt(appraisalFields[0]));
-            String duration = appraisalFields[i].replaceFirst("Rating", "1");
+            String duration = appraisalFields[i].replaceFirst("Rating", "01");
             Date doj = DateUtility.stringToDate(duration,"DATE_FORMAT");
             java.sql.Date sqlDate = new java.sql.Date(doj.getTime());
             appraisal.setRatingPeriod(sqlDate);
