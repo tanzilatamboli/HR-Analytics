@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AssociateDAO {
+    public AssociateDAO() {
+        System.out.println("bye");
+    }
+
     private HibernateTemplate hibernateTemplate;
 
     public HibernateTemplate getHibernateTemplate() {

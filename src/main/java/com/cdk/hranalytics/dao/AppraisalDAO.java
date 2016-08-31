@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 public class AppraisalDAO {
         private HibernateTemplate hibernateTemplate;
 
+
+    public AppraisalDAO() {
+        System.out.println("heelllooo");
+    }
+
     public HibernateTemplate getHibernateTemplate() {
         return hibernateTemplate;
     }

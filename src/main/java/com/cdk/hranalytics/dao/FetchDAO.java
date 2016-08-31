@@ -1,5 +1,6 @@
 package com.cdk.hranalytics.dao;
 
+import com.cdk.hranalytics.controller.AppraisalController;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,8 @@ public class FetchDAO {
     public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
         this.hibernateTemplate = hibernateTemplate;
     }
+
+
 
 
 }

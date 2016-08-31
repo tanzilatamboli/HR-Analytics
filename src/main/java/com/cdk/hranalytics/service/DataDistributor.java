@@ -6,24 +6,17 @@ import com.cdk.hranalytics.domain.Appraisal;
 import com.cdk.hranalytics.domain.Associate;
 import com.cdk.hranalytics.util.CsvUtility;
 import com.cdk.hranalytics.util.DateUtility;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+
 public class DataDistributor {
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
-    @RequestMapping(value = "/read.do", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    void read(String filePath)  {
-        //String file="C:\\Users\\dullus\\Desktop\\HRProjectData.csv";
+    public static Boolean read(String filePath)  {
         List<Associate> associatesList = null;
         List<Appraisal> appraisalList = null;
         List<String[]> listOfRecords = null;
@@ -38,9 +31,10 @@ public class DataDistributor {
                 appraisalList.add(buildAppraisal(line));
             }
         }
+        return true;
     }
 
-    private Appraisal buildAppraisal(String[] line) {
+    private static Appraisal buildAppraisal(String[] line) {
         Appraisal appraisal = new Appraisal();
 
         for(int i = 7 ;i <= line.length ; i=i+3){
@@ -59,7 +53,7 @@ public class DataDistributor {
     }
 
 
-    private Associate buildAssociate(String line[]) {
+    private static Associate buildAssociate(String line[]) {
         Associate associate = new Associate();
         associate.setId(Integer.parseInt(line[0]));
         associate.setFirstName(line[1]);
