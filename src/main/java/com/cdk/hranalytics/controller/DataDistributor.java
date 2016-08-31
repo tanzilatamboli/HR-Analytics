@@ -44,7 +44,10 @@ public class DataDistributor {
         String[] appraisalFields = line.split(FIELD_SEPARATOR);
         for(int i = 7 ; ; i=i+3){
             appraisal.setId(Integer.parseInt(appraisalFields[0]));
-            //appraisal.setRatingPeriod(appraisalFields[4]);
+            String duration = appraisalFields[i].replaceFirst("Rating", "1");
+            Date doj = DateUtility.stringToDate(duration,"DATE_FORMAT");
+            java.sql.Date sqlDate = new java.sql.Date(doj.getTime());
+            appraisal.setRatingPeriod(sqlDate);
             appraisal.setRating(Integer.parseInt(appraisalFields[i]));
             appraisal.setSalary(Double.parseDouble(appraisalFields[i+1]));
             appraisal.setPromotedTo(appraisalFields[i+2]);
