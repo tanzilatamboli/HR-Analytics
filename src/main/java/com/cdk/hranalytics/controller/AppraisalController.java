@@ -41,7 +41,7 @@ public class AppraisalController {
     String read(HttpServletRequest request, HttpServletResponse response){
         System.out.println("In read method");
 
-        DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
+       /* DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
         ServletFileUpload sf = new ServletFileUpload(diskFileItemFactory);
 
         try {
@@ -53,7 +53,7 @@ public class AppraisalController {
             DataUtility.read(filePath);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return "success";
     }
 
